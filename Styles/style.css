@@ -1,0 +1,51 @@
+body {
+    background-color: #0F0F0F;
+}
+
+.cabecalho {
+    padding: .7em 0 .7em 1.5em;
+    background-color: #151515;
+}
+
+.logo-main {
+    width: 7%;
+}
+
+hr {
+    margin-top: 1em;
+    color: #EEEEEE;
+}
+
+main {
+    padding: 2em 5em;
+}
+
+.titulo {
+    color: #EEEEEE;
+    font-family: 'Montserrat';
+    font-size: 2em;
+}
+
+.tabela {
+    margin-top: 1.5em;
+    font-family: 'Montserrat';
+    border-collapse: collapse;
+    width: 100%;
+    color: #EEEEEE;
+  }
+ 
+th {
+    background-color: #171717;
+    font-weight: 700;
+}
+
+td {
+    background-color: #313131;
+}
+
+td, th {
+    border: 1px solid #413F42;
+    text-align: center;
+    padding: 8px;
+}
+  
