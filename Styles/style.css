@@ -20,7 +20,7 @@ main {
     padding: 2em 5em;
 }
 
-.titulo {
+.sessao-tabela__titulo {
     color: #EEEEEE;
     font-family: 'Montserrat';
     font-size: 2em;
@@ -48,4 +48,66 @@ td, th {
     text-align: center;
     padding: 8px;
 }
-  
+
+.formulario {
+    
+}
+
+.sessao-adicionar__titulo {
+    margin-top: 1.5em;
+    color: #EEEEEE;
+    font-family: 'Montserrat';
+    font-size: 2em;
+}
+
+.grupo {
+    display: inline-block;
+    margin-right: 2.5em;
+    margin-top: 1em;
+}
+
+.titulo {
+    color: #EEEEEE;
+    font-family: 'Montserrat';
+    font-size: 1em;
+}
+
+.input {
+    margin: .5em 0;
+    padding: 1em 0 1em 1em;
+    width: 35em;
+    background-color: #313131;
+    border-radius: 2px;
+    border: none;
+    color: #EEEEEE;
+    font-family: 'Montserrat';
+}
+
+.input-select {
+    margin: .5em 0;
+    padding: 1em 0 1em 1em;
+    width: 36em;
+    background-color: #313131;
+    border-radius: 2px;
+    border: none;
+    color: #EEEEEE;
+    font-family: 'Montserrat';
+}
+
+.botao-adicionar {
+    margin-top: 2em;
+    width: 15%;
+    padding: 15px 0;
+    background: #0766AD;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.botao-adicionar:hover {
+    background: #0a7dd4;
+}

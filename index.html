@@ -15,42 +15,80 @@
         <img class="logo-main" src="Assets/Logo.png" alt="Logo do Main">
     </header>
     <main>
-    <h1 class="titulo" onclick="this.innerHTML='Eu sou a vingança!'">Vendas</h1> 
-    <hr>
-    <table class="tabela">
-        <tr class="Colunas">
-            <th>Usuario</th>
-            <th>Produto</th>
-            <th>Valor</th>
-            <th>Desconto aplicado em %</th>
-            <th>Valor total</th>
-        </tr>
-        <tr class="Usuario">
-            <td class="info-nome">Enzogamerkawaii123</td>
-            <td class="info-produto">Forza Horizon 5</td>
-            <td class="info-valor">249</td>
-            <td class="info-desconto">15</td>
-            <td class="info-total">249,00</td>
-        </tr>
-        <tr class="Usuario">
-            <td class="info-nome">LichKing974</td>
-            <td class="info-produto">Lies of P</td>
-            <td class="info-valor">100</td>
-            <td class="info-desconto">25</td>
-            <td class="info-total">249,00</td>
-        </tr>
-        <tr class="Usuario">
-            <td class="info-nome">MotherSlayer123</td>
-            <td class="info-produto">Dark Souls 3</td>
-            <td class="info-valor">229</td>
-            <td class="info-desconto">50</td>
-            <td class="info-total">114,95</td>
-        </tr>
-    </table>
+
+        <section>
+            <h1 class="sessao-tabela__titulo" onclick="this.innerHTML='Eu sou a vingança!'">Vendas</h1> 
+            <hr>
+            <table class="tabela">
+                <tr class="Colunas">
+                    <th>Usuário</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Desconto aplicado em %</th>
+                    <th>Valor total</th>
+                </tr>
+                <tr class="Usuario">
+                    <td class="info-nome">Enzogamerkawaii123</td>
+                    <td class="info-produto">Forza Horizon 5</td>
+                    <td class="info-valor">249</td>
+                    <td class="info-desconto">15</td>
+                    <td class="info-total">249,00</td>
+                </tr>
+                <tr class="Usuario">
+                    <td class="info-nome">LichKing974</td>
+                    <td class="info-produto">Lies of P</td>
+                    <td class="info-valor">100</td>
+                    <td class="info-desconto">25</td>
+                    <td class="info-total">249,00</td>
+                </tr>
+                <tr class="Usuario">
+                    <td class="info-nome">MotherSlayer123</td>
+                    <td class="info-produto">Dark Souls 3</td>
+                    <td class="info-valor">229</td>
+                    <td class="info-desconto">0</td>
+                    <td class="info-total">114,95</td>
+                </tr>
+            </table>
+        </section>
+        <section class="sessao-adicionar">
+            <h1 class="sessao-adicionar__titulo" onclick="this.innerHTML='Eu sou a noite!'">Adicionar novo jogo</h1>
+            <hr>
+            <form class="formulario">
+
+                <div class="grupo">
+                    <label class="titulo" for="titulo-nome">Nome:</label><br>
+                    <input class="input" type="text" id="input-nome" name="input-nome" placeholder="Digite o nome do(a) usuário(a)"><br>
+                </div>
+
+                <div class="grupo">
+                    <label class="titulo" for="titulo-desconto">Valor do desconto:</label><br>
+                    <input class="input" type="text" id="input-desconto" name="input-desconto" placeholder="Digite o valor do desconto"><br>
+                </div>
+
+                <div class="grupo">
+                    <label class="titulo" for="titulo-jogo">Jogo:</label><br>
+                    <select class="input-select" name="select-jogos" id="select-jogos">
+                        <option>Selecione</option>
+                        <option value="Batman: Arkham Knight">Batman: Arkham Knight</option>
+                        <option value="The Witcher 3: Wild Hunt">The Witcher 3: Wild Hunt</option>
+                        <option value="Celeste">Celeste</option>
+                        <option value="Cuphead">Cuphead</option>
+                    </select><br>
+                </div>
+
+                <div class="grupo">
+                    <label class="titulo" for="titulo-valor">Valor em R$:</label><br>
+                    <input class="input" type="text" id="input-valor" name="input-valor" placeholder="Digite o valor total do jogo"><br>
+                </div>
+                
+        </section>
+            
+        <input class="botao-adicionar" type="submit" value="Adicionar">
     </main>
     <footer>
     </footer>
 
-    <script src="test.js"></script>
+    <script src="Scripts/test.js"></script>
+    <script src="Scripts/adicionar_jogo.js"></script>
     </body>
 </html>
