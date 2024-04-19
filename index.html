@@ -19,7 +19,7 @@
         <section>
             <h1 class="sessao-tabela__titulo" onclick="this.innerHTML='Eu sou a vingança!'">Vendas</h1> 
             <hr>
-            <table class="tabela">
+            <table id="tabela" class="tabela">
                 <tr class="Colunas">
                     <th>Usuário</th>
                     <th>Produto</th>
@@ -53,21 +53,21 @@
         <section class="sessao-adicionar">
             <h1 class="sessao-adicionar__titulo" onclick="this.innerHTML='Eu sou a noite!'">Adicionar novo jogo</h1>
             <hr>
-            <form class="formulario">
+            <form id="formulario" class="formulario">
 
                 <div class="grupo">
                     <label class="titulo" for="titulo-nome">Nome:</label><br>
-                    <input class="input" type="text" id="input-nome" name="input-nome" placeholder="Digite o nome do(a) usuário(a)"><br>
+                    <input class="input" type="text" id="input_nome" name="input_nome" required placeholder="Digite o nome do(a) usuário(a)" ><br>
                 </div>
 
                 <div class="grupo">
                     <label class="titulo" for="titulo-desconto">Valor do desconto:</label><br>
-                    <input class="input" type="text" id="input-desconto" name="input-desconto" placeholder="Digite o valor do desconto"><br>
+                    <input class="input" type="number" id="input_desconto" name="input_desconto" required placeholder="Digite o valor do desconto"><br>
                 </div>
 
                 <div class="grupo">
                     <label class="titulo" for="titulo-jogo">Jogo:</label><br>
-                    <select class="input-select" name="select-jogos" id="select-jogos">
+                    <select class="input-select" name="select_jogos" id="select_jogos">
                         <option>Selecione</option>
                         <option value="Batman: Arkham Knight">Batman: Arkham Knight</option>
                         <option value="The Witcher 3: Wild Hunt">The Witcher 3: Wild Hunt</option>
@@ -78,12 +78,14 @@
 
                 <div class="grupo">
                     <label class="titulo" for="titulo-valor">Valor em R$:</label><br>
-                    <input class="input" type="text" id="input-valor" name="input-valor" placeholder="Digite o valor total do jogo"><br>
+                    <input class="input" type="number" id="input_valor" name="input_valor" required placeholder="Digite o valor total do jogo"><br>
                 </div>
                 
-        </section>
+        
             
-        <input class="botao-adicionar" type="submit" value="Adicionar">
+                <input id="botao-adicionar" class="botao-adicionar" value="Adicionar" type="submit">
+            </form>>
+        </section>
     </main>
     <footer>
     </footer>

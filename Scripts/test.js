@@ -1,4 +1,4 @@
-var usuarios = document.querySelectorAll(".Usuario");
+var usuarios = document.querySelectorAll(".Usuario")
 
 for (var i = 0; i < usuarios.length; i++) {
 
