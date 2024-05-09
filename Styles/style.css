@@ -111,3 +111,14 @@ td, th {
 .botao-adicionar:hover {
     background: #0a7dd4;
 }
+
+#mensagens-erro {
+    list-style-type: circle;
+    color: rgb(214, 0, 0);
+    margin: 2em 0 2em 1em;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: 1s;
+}

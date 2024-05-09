@@ -10,9 +10,15 @@ botaoAdicionar.addEventListener("click", function(event){
     // Captura os dados da nova compra
     var jogo = ObtemJogo(form)
 
+    // Valida os dados na nova encomenda
+    var validacao = validaCompra(jogo)
+
     // Valida se a compra pode ser inserida
-    if(validaCompra(compra).length > 0) {
-        console.log(validaCompra(compra))
+    if(validacao.length > 0) {
+        // Erro nos dados, informa o usuário
+        exibeMensagensErros(validacao);
+        return;
+
     } else {
 
         // Insere a nova encomenda na tabela
@@ -20,6 +26,9 @@ botaoAdicionar.addEventListener("click", function(event){
 
         // Limpa o formulário
         form.reset()
+
+        // Limpa a UL de erros
+        document.querySelector("#mensagens-erro").innerHTML="";
     }
 })
 
@@ -85,12 +94,31 @@ function validaCompra(compra) {
     }
 
     // Verifica se o valor do desconto é maior que zero e um número
-    if (compra.desconto < 0 || isNaN) {
+    if (compra.desconto < 0 || isNaN(compra.desconto) || compra.desconto=="") {
         erros.push("O valor do desconto deve ser númerico e não deve ser menor que 0.")
     }
 
     // Verifica se o valor é maior ou igual a zero e um número
-    if (compra.valor < 0 || isNaN(compra.valor)) {
+    if (compra.valor < 0 || isNaN(compra.valor) || compra.valor=="") {
         erros.push("O valor do jogo deve ser um número e não deve ser menor que 0.")
     }
+
+    if (compra.jogo == "Selecione") {
+        erros.push("Selecione um jogo!")
+    }
+
+    return erros
+}
+
+function exibeMensagensErros(erros) {
+    var ul = document.querySelector("#mensagens-erro");
+
+    // limpa a UL para exibir os erros
+    ul.innerHTML = ''
+
+    erros.forEach(function(mensagem) {
+        var li = document.createElement("li")
+        li.textContent = mensagem
+        ul.appendChild(li)
+    })
 }
