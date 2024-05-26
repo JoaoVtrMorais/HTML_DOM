@@ -1,5 +1,7 @@
 var botaoAdicionar = document.querySelector("#botao-adicionar");
 
+var porcentagem = 0;
+
 botaoAdicionar.addEventListener("click", function(event){
 
     event.preventDefault();
@@ -22,7 +24,7 @@ botaoAdicionar.addEventListener("click", function(event){
     } else {
 
         // Insere a nova encomenda na tabela
-        addjogo(jogo)
+        addjogo(jogo, false);
 
         // Limpa o formulário
         form.reset()
@@ -36,17 +38,17 @@ botaoAdicionar.addEventListener("click", function(event){
 function ObtemJogo(dadosForm) {
     
     var jogo = {
-        nome: dadosForm.input_nome.value,
-        jogo: dadosForm.select_jogos.value,
-        valor: dadosForm.input_valor.value,
-        desconto: dadosForm.input_desconto.value
+        internalName: dadosForm.input_nome.value,
+        title: dadosForm.select_jogos.value,
+        normalPrice: dadosForm.input_valor.value,
+        salePrice: dadosForm.input_desconto.value
     }
 
     return jogo
 }
 
 // Função para adicionar a nova compra na tabela
-function addjogo(novaCompra) {
+function addjogo(novaCompra, usarLogicaAPI) {
 
     /* 
         1. Montar as TDs - OK
@@ -57,28 +59,32 @@ function addjogo(novaCompra) {
 
     var tabela = document.querySelector("#tabela")
 
-    tabela.appendChild(montaTR(novaCompra))
+    tabela.appendChild(montaTR(novaCompra, 'Usuario', usarLogicaAPI))
 }
 
 // Cria uma coluna nova
-function montaTD(dado) {
+function montaTD(dado, classe) {
 
-    var td = document.createElement("td")
-    td.textContent = dado
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.setAttribute('class', classe);
 
     return td
 }
 
 // Monta uma nova TR
-function montaTR(novaCompra) {
+function montaTR(novaCompra, classe, usarLogicaAPI) {
 
     var tr = document.createElement("tr")
+    tr.setAttribute('class', classe);
 
-    tr.appendChild(montaTD(novaCompra.nome))
-    tr.appendChild(montaTD(novaCompra.jogo))
-    tr.appendChild(montaTD(formataEmValorMonetário(parseFloat(novaCompra.valor))))
-    tr.appendChild(montaTD(formataEmPorcentagem(parseFloat(novaCompra.desconto))))
-    tr.appendChild(montaTD(formataEmValorMonetário(calculaValorComDesconto(novaCompra.valor, novaCompra.desconto))))
+    porcentagem = formataEmPorcentagem(parseFloat(novaCompra.normalPrice), parseFloat(novaCompra.salePrice), usarLogicaAPI);
+
+    tr.appendChild(montaTD(novaCompra.internalName, 'info-nome'))
+    tr.appendChild(montaTD(novaCompra.title, 'info-produto'))
+    tr.appendChild(montaTD(formataEmValorMonetário(parseFloat(novaCompra.normalPrice)), 'info-valor'))
+    tr.appendChild(montaTD(temDesconto(parseFloat(porcentagem)) ? `${Math.round(porcentagem)}%` : "Sem desconto!", 'info-desconto'))
+    tr.appendChild(montaTD(formataEmValorMonetário(calculaValorComDesconto(novaCompra.normalPrice, porcentagem)), 'info-total'))
 
     return tr
 }
@@ -89,21 +95,21 @@ function validaCompra(compra) {
     var erros = []
 
     // Verifica se o nome foi informado
-    if (compra.nome=="") {
+    if (compra.internalName=="") {
         erros.push("O nome não pode ser vazio!")
     }
 
     // Verifica se o valor do desconto é maior que zero e um número
-    if (compra.desconto < 0 || isNaN(compra.desconto) || compra.desconto=="") {
-        erros.push("O valor do desconto deve ser númerico e não deve ser menor que 0.")
+    if (Math.round(porcentagem > 100)) {
+        erros.push("O valor do desconto deve ser númerico e não deve ser maior que 100.")
     }
 
     // Verifica se o valor é maior ou igual a zero e um número
-    if (compra.valor < 0 || isNaN(compra.valor) || compra.valor=="") {
+    if (compra.normalPrice < 0 || isNaN(compra.normalPrice) || compra.normalPrice=="") {
         erros.push("O valor do jogo deve ser um número e não deve ser menor que 0.")
     }
 
-    if (compra.jogo == "Selecione") {
+    if (compra.title == "Selecione") {
         erros.push("Selecione um jogo!")
     }
 
@@ -122,3 +128,13 @@ function exibeMensagensErros(erros) {
         ul.appendChild(li)
     })
 }
+
+function temDesconto(desconto) {
+
+    if (desconto <= 0 ) {
+        return false;
+    } else {
+        return true;
+    };
+
+};

@@ -2,12 +2,12 @@ var usuarios = document.querySelectorAll(".Usuario")
 
 for (var i = 0; i < usuarios.length; i++) {
 
-    valor = parseFloat(usuarios[i].querySelector(".info-valor").textContent)
-    desconto = parseFloat(usuarios[i].querySelector(".info-desconto").textContent)
-    total = calculaValorComDesconto(valor, desconto)
+    var valor = parseFloat(usuarios[i].querySelector(".info-valor").textContent)
+    var desconto = parseFloat(usuarios[i].querySelector(".info-desconto").textContent)
+    var total = calculaValorComDesconto(valor, desconto)
 
     usuarios[i].querySelector(".info-valor").textContent = formataEmValorMonetário(valor)
-    usuarios[i].querySelector(".info-desconto").textContent = formataEmPorcentagem(desconto)
+    usuarios[i].querySelector(".info-desconto").textContent = `${formataEmPorcentagem(0, desconto)}%`
 
     // Valida o valor do desconto
     if (desconto < 0 || isNaN(desconto)) {
@@ -30,6 +30,10 @@ for (var i = 0; i < usuarios.length; i++) {
         usuarios[i].querySelector(".info-total").textContent = 0
         usuarios[i].querySelector(".info-desconto").textContent = 0
     }
+
+    if (desconto <= 0 ) {
+        usuarios[i].querySelector(".info-desconto").textContent = "Sem desconto!"
+    }
 }
 // Função para calcular o valor total com desconto
 
@@ -50,6 +54,11 @@ function formataEmValorMonetário(valor) {
     }
 }
 
-function formataEmPorcentagem(valor) {
-    return `${valor}%`
+function formataEmPorcentagem(valorNormal, valorDesconto, usarLogicaAPI = false) {
+    if (usarLogicaAPI == true) {
+        return ((valorNormal - valorDesconto) / valorNormal) * 100;
+    } else {
+        return valorDesconto;
+    }
+
 }

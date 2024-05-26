@@ -49,8 +49,8 @@ td, th {
     padding: 8px;
 }
 
-.formulario {
-    
+.info-nome {
+    text-transform: lowercase;
 }
 
 .sessao-adicionar__titulo {
@@ -94,7 +94,7 @@ td, th {
     font-family: 'Montserrat';
 }
 
-.botao-adicionar {
+.botao {
     margin-top: 2em;
     width: 15%;
     padding: 15px 0;
@@ -108,7 +108,7 @@ td, th {
     cursor: pointer;
 }
 
-.botao-adicionar:hover {
+.botao:hover {
     background: #0a7dd4;
 }
 
