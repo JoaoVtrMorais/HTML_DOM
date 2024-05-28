@@ -100,7 +100,7 @@ function validaCompra(compra) {
     }
 
     // Verifica se o valor do desconto é maior que zero e um número
-    if (Math.round(porcentagem > 100)) {
+    if (compra.salePrice > 100 || compra.salePrice <= -1) {
         erros.push("O valor do desconto deve ser númerico e não deve ser maior que 100.")
     }
 

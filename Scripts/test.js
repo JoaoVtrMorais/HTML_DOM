@@ -46,11 +46,15 @@ function calculaValorComDesconto(valor, desconto) {
 }
 
 function formataEmValorMonetário(valor) {
-    if (typeof valor == "number") {    
-        valorMonetario = valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
-        return valorMonetario
+    if (typeof valor == "number") {
+        if (valor > 0) {    
+            valorMonetario = valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            return valorMonetario;
+        } else {
+            return "Gratuito";
+        }
     } else {
-        return "Valor inválido!"
+        return "Valor inválido!";
     }
 }
 
